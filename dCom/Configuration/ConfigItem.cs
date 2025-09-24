@@ -267,36 +267,59 @@ namespace dCom.Configuration
         #endregion Properties
 
         public ConfigItem(List<string> configurationParameters)
-		{
-			RegistryType = GetRegistryType(configurationParameters[0]);
-			int temp;
-			double doubleTemp;
-			Int32.TryParse(configurationParameters[1], out temp);
-			NumberOfRegisters = (ushort)temp;
-			Int32.TryParse(configurationParameters[2], out temp);
-			StartAddress = (ushort)temp;
-			Int32.TryParse(configurationParameters[3], out temp);
-			DecimalSeparatorPlace = (ushort)temp;
-			Int32.TryParse(configurationParameters[4], out temp);
-			MinValue = (ushort)temp;
-			Int32.TryParse(configurationParameters[5], out temp);
-			MaxValue = (ushort)temp;
-			Int32.TryParse(configurationParameters[6], out temp);
-			DefaultValue = (ushort)temp;
-			ProcessingType = configurationParameters[7];
-			Description = configurationParameters[8].TrimStart('@');
-            if (configurationParameters[9].Equals("#"))
-            {
-                AcquisitionInterval = 1;
-            }
-            else
-            {
-                Int32.TryParse(configurationParameters[9], out temp);
-                AcquisitionInterval = temp;
-            }
+        {
+            RegistryType = GetRegistryType(configurationParameters[0]);
+            int temp;
+            double doubleTemp;
+
+            Int32.TryParse(configurationParameters[1], out temp);
+            NumberOfRegisters = (ushort)temp;
+
+            Int32.TryParse(configurationParameters[2], out temp);
+            StartAddress = (ushort)temp;
+
+            Int32.TryParse(configurationParameters[3], out temp);
+            DecimalSeparatorPlace = (ushort)temp;
+
+            Int32.TryParse(configurationParameters[4], out temp);
+            MinValue = (ushort)temp;
+
+            Int32.TryParse(configurationParameters[5], out temp);
+            MaxValue = (ushort)temp;
+
+            Int32.TryParse(configurationParameters[6], out temp);
+            DefaultValue = (ushort)temp;
+
+            ProcessingType = configurationParameters[7];
+            Description = configurationParameters[8].TrimStart('@');
+
+            if (configurationParameters[9].Equals("#")) AcquisitionInterval = 1;
+            else { Int32.TryParse(configurationParameters[9], out temp); AcquisitionInterval = temp; }
+
+            if (configurationParameters.Count > 10 && configurationParameters[10] != "#") { Double.TryParse(configurationParameters[10], out doubleTemp); ScaleFactor = doubleTemp; }
+            else ScaleFactor = 1;
+
+            if (configurationParameters.Count > 11 && configurationParameters[11] != "#") { Double.TryParse(configurationParameters[11], out doubleTemp); Deviation = doubleTemp; }
+            else Deviation = 0;
+
+            if (configurationParameters.Count > 12 && configurationParameters[12] != "#") { Double.TryParse(configurationParameters[12], out doubleTemp); EGU_Min = doubleTemp; }
+            else EGU_Min = 0;
+
+            if (configurationParameters.Count > 13 && configurationParameters[13] != "#") { Double.TryParse(configurationParameters[13], out doubleTemp); EGU_Max = doubleTemp; }
+            else EGU_Max = 100;
+
+            if (configurationParameters.Count > 14 && configurationParameters[14] != "#") { Int32.TryParse(configurationParameters[14], out temp); AbnormalValue = (ushort)temp; }
+            else AbnormalValue = 0;
+
+            if (configurationParameters.Count > 15 && configurationParameters[15] != "#") { Double.TryParse(configurationParameters[15], out doubleTemp); LowLimit = doubleTemp; }
+            else LowLimit = 0;
+
+            if (configurationParameters.Count > 16 && configurationParameters[16] != "#") { Double.TryParse(configurationParameters[16], out doubleTemp); HighLimit = doubleTemp; }
+            else HighLimit = 100;
         }
 
-		private PointType GetRegistryType(string registryTypeName)
+
+        private PointType GetRegistryType(string registryTypeName)
 		{
 			PointType registryType;
 			switch (registryTypeName)
