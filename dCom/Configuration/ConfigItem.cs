@@ -312,7 +312,7 @@ namespace dCom.Configuration
             else AbnormalValue = 0;
 
             if (configurationParameters.Count > 15 && configurationParameters[15] != "#") { Double.TryParse(configurationParameters[15], out doubleTemp); LowLimit = doubleTemp; }
-            else LowLimit = 0;
+            else LowLimit = 20;
 
             if (configurationParameters.Count > 16 && configurationParameters[16] != "#") { Double.TryParse(configurationParameters[16], out doubleTemp); HighLimit = doubleTemp; }
             else HighLimit = 100;
