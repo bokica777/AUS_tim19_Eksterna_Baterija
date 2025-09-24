@@ -18,10 +18,12 @@ namespace Modbus.ModbusFunctions
         /// <param name="commandParameters">The modbus command parameters.</param>
 		public ReadCoilsFunction(ModbusCommandParameters commandParameters) : base(commandParameters)
         {
+            //Proverava ispravnost parametara
             CheckArguments(MethodBase.GetCurrentMethod(), typeof(ModbusReadCommandParameters));
         }
 
         /// <inheritdoc/>
+        /// //pakuje se Modbus zahtev
         public override byte[] PackRequest()
         {
             //TO DO: IMPLEMENT

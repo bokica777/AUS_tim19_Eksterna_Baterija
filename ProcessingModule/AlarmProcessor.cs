@@ -15,8 +15,11 @@ namespace ProcessingModule
         /// <returns>The alarm indication.</returns>
 		public AlarmType GetAlarmForAnalogPoint(double eguValue, IConfigItem configItem)
 		{
-			return AlarmType.NO_ALARM;
-		}
+            if (eguValue <= configItem.EGU_Min || eguValue >= configItem.EGU_Max) return AlarmType.REASONABILITY_FAILURE;
+            if (eguValue <= configItem.LowLimit) return AlarmType.LOW_ALARM;
+            if (eguValue >= configItem.HighLimit) return AlarmType.HIGH_ALARM;
+            return AlarmType.NO_ALARM;
+        }
 
         /// <summary>
         /// Processes the alarm for digital point.
