@@ -93,7 +93,6 @@ namespace ProcessingModule
                     processingManager.ExecuteWriteCommand(points[6].ConfigItem, configuration.GetTransactionId(), configuration.UnitAddress, 3001, 0);
                     i2 = 0;
                 }
-
                 int temp = k;
                 if (t1 == 1) temp -= 1;
                 if (t2 == 1) temp -= 1;
@@ -116,11 +115,9 @@ namespace ProcessingModule
                     if (i1 == 1) processingManager.ExecuteWriteCommand(points[5].ConfigItem, configuration.GetTransactionId(), configuration.UnitAddress, 3000, 0);
                     if (i2 == 1) processingManager.ExecuteWriteCommand(points[6].ConfigItem, configuration.GetTransactionId(), configuration.UnitAddress, 3001, 0);
                 }
-
                 Thread.Sleep(1000);
             }
         }
-
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
