@@ -6,6 +6,6 @@ DO_REG  1 1000   0  0  1   0   DO  @DigOut1  1000
 DO_REG  1 1001   0  0  1   0   DO  @DigOut2  1000
 DO_REG  1 1002   0  0  1   0   DO  @DigOut3  1000
 DO_REG  1 1003   0  0  1   0   DO  @DigOut4  1000
-HR_INT  1 2000   0  0  100 100 AO  @AnaOut1  1000
+HR_INT  1 2000   0  0  100 10  AO  @AnaOut1  1000
 DO_REG  1 3000   0  0  1   1   DO  @DigOut6  1000
 DO_REG  1 3001   0  0  1   0   DO  @DigOut7  1000
